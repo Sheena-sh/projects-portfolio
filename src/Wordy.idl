@@ -1,0 +1,176 @@
+module wordyApp {
+
+    // OBJECTS
+   struct Player {
+   	    string username;
+   	    string password;
+    	boolean loggedIn;
+    	boolean isInGame;
+    	long roundsWon;
+   };
+
+   typedef sequence<Player> PlayerList;
+
+   struct Word {
+        string wordPrompt;
+        Player wordOwner;
+   };
+
+  typedef sequence<Word> WordList;
+
+   struct RoomGame {
+        string gameRoomID;
+        string gameState; //pending, inGame, finishing
+        string roomRLetters;
+        boolean roundsWonIncr;
+        string winner;
+        PlayerList players;
+        WordList submittedWords;
+   };
+
+   struct LeaderBoard {
+        long rank;
+        string playerName;
+        long numberOfWins;
+   };
+
+   struct LongestWordWinner {
+        long wordLength;
+        string playerName;
+        string longestWord;
+        long rank;
+   };
+
+    // EXCEPTIONS
+   exception AlreadyLoggedIn {
+   	    string message;
+   };
+
+   exception IncorrectCredentials {
+   	    string message;
+   };
+
+   exception InvalidWord {
+   	    string message;
+   };
+
+   exception NoPlayerJoined {
+   	    string message;
+   };
+
+   exception RoundEnd {
+        string message;
+   };
+
+   exception NotPartOf17Letters {
+        string message;
+   };
+
+   exception Exceed10Secs {
+        string message;
+   };
+
+    exception UserNotFound {
+        string message;
+    };
+
+    exception ExecutionException {
+        string message;
+    };
+
+    exception NoWinner {
+        string message;
+    };
+
+    exception TieResult {
+        string message;
+    };
+
+    // SERVER TO CLIENT METHODS
+	interface Wordy {
+
+	        /* Client login */
+            Player login(in string username, in string password) raises (IncorrectCredentials, AlreadyLoggedIn);
+
+            /* Displays leading players */
+    		typedef sequence<LeaderBoard> hallOfFame;
+    		hallOfFame showLeaderBoard();
+
+            /* Displays top 5 longest words*/
+    		typedef sequence<LongestWordWinner> longestWinner;
+    		longestWinner top5longestWords();
+
+            /* Creates room/s for players */
+            RoomGame play(in Player playerInstance) raises (NoPlayerJoined);
+
+            /* Handles next round*/
+            RoomGame nextRoundHandler(in RoomGame roomToPrepare);
+
+            /* Waits for players in the room */
+            void startTenSecondTimer(in long milliseconds);
+
+            /* Create timer for the round/s */
+            void startRoundTimer(in RoomGame game, in long seconds);
+
+            /* Create timer for in between break of rounds */
+            void startBreakTimer(in RoomGame game);
+
+            /* Retrieves timer for the round */
+            long long getRoundTimer(in string roomRoundID);
+
+            /* Retrieves timer for the in between break */
+            long long getBreakTimer(in string roomBreakID);
+
+            void addRoom(in string roomIDForRoomAdd, in RoomGame roomForAddRoom);
+
+            void decreasePlayerCount(in string roomNumberToDecreasePlayer);
+
+            void deleteRoom(in string roomNumberToDelete);
+
+            void updatePlayerIsInGame(in string usernamePlayer, in boolean isPlayerInGame);
+
+	        void updateResult(in string roomgameID, in string winner, in long roundnumber);
+
+	        string getWinner(in string roomgameID, in long roundnumber);
+
+            long getPlayerCount(in string roomIDForPlayerCount);
+
+            /* Calculates the remaining time left */
+            long long calculateTimeLeft(in long long startTime, in long long endTime);
+
+            /* Retrieves time left of the timer */
+            long long getTimeLeft();
+
+            /* Generates the 17 random letters */
+    		void setRandomLetters(in RoomGame roomToSetRLetters);
+
+            /* Retrieves 17 random letters to client */
+    		string getRoomRandomLetters(in string roomIDToGetRLetters);
+
+            /* Validates user's entered word */
+            boolean userEnteredWord(in string userWord, in Player playerInstance, in RoomGame playerCurrentRoom);
+
+            /* Checks for the specific round winner */
+    		Player roundWinnerChecker(in RoomGame room) raises (NoWinner, TieResult);
+
+    		/* Checks for the game win state */
+    		boolean gameWinStateChecker(in RoomGame room);
+
+    		/* Retrieves game winner */
+    		Player getGameWinner(in RoomGame room);
+
+    		/* Handles game completion */
+    		void finishGame(in Player playerID, in RoomGame room);
+
+    		/* Client logout */
+    		void logOffUser(in string username) raises (UserNotFound);
+
+    };
+
+};
+
+
+
+
+
+
