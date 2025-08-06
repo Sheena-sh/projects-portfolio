@@ -1,0 +1,275 @@
+    /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> HERO SELECTION CONTAINERS */
+.hero-selection-container {
+    width: 100%;
+    height: 1080px;
+    overflow: hidden;
+    margin-bottom: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.side-image .attributes {
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+}
+
+.container, .baseContainer {
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+}
+
+.container {
+    padding: 80px;
+    width: 100%;
+    height: 800px;
+    position: inherit;
+    margin-bottom: 0;
+    overflow: hidden;
+}
+
+.container {
+    background: rgba(13, 16, 59, 0.89);
+    background: linear-gradient(0deg, rgba(13, 16, 59, 0.89) 0%, rgba(130, 0, 0, 0.71) 100%);
+    background-image: url("../images/dota_background.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    overflow: hidden;
+}
+
+    /* HERO BASE STATS CONTAINER */
+.baseContainer {
+    bottom: 0;
+}
+
+.baseContainer {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    bottom: 250px;
+    margin-bottom: 0;
+    overflow: hidden;
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(7,0,28,0.8) 21%, rgba(0,0,0,1) 64%);
+}
+
+.baseStats {
+    margin-top: 20px;
+    max-width: 95%;
+    padding: 10px;
+    height: 195px;
+    background-color: rgba(244, 244, 244, 0.4);
+    padding-bottom: 0;
+}
+
+    /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> HERO PORTRAIT VIDEO */
+
+.side-image {
+    flex: 50% 40% auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 600px;
+    height: 600px;
+}
+
+.side-image {
+    border: solid 5px #b91717;
+    background-image: url("../images/mist.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.side-image {
+    display: flex;
+    justify-self: center;
+}
+
+.side-image img, .side-image video {
+    max-width: 600px;
+    width: 600px;
+}
+
+    /* HERO ATTRIBUTES */
+.table-attributes {
+    table-layout: fixed;
+    margin-top: 450px;
+    width: 600px;
+    background: linear-gradient(180deg, rgba(0,0,0,0.6278712168461135) 19%, rgba(7,0,28,0.8379552504595589) 46%, rgba(112,9,9,1) 100%);
+}
+
+.table-attributes th img {
+    margin: 0;
+    padding: 0;
+    max-width: 60px;
+}
+
+.table-attributes h4 {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    position: relative;
+    margin-bottom: 2px;
+    color: #ffffff;
+}
+
+.table-attributes p {
+    font-family: 'Segoe UI', Tahoma, "Geneva", Verdana, sans-serif;
+    font-size: 20px;
+    margin-top: 2px;
+    padding-top: 0;
+    color: #ffffff;
+}
+
+    /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> HERO INFORMATION */
+    /* DROPDOWN HERO SELECTION */
+.dropdown {
+    position: relative;
+    margin-bottom: 15px;
+    background: rgba(244, 244, 244, 0.4);
+}
+
+.dropdown select {
+    display: inline-block;
+    font-size: 25px;
+    text-align: center;
+    width: 850px;
+    padding: 10px;
+    outline: 0;
+    border: none;
+    appearance: none;
+    background: transparent;
+    box-sizing: border-box;
+}
+
+.dropdown select:hover {
+    border-color: #000;
+}
+
+.dropdown select option {
+    font-weight: normal;
+}
+
+.select_arrow {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 1em;
+    height: 1em;
+    border: solid black;
+    border-width: 0.3em 0.3em 0 0;
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+    /* ARROW ROTATE */
+.dropdown select:focus + .select_arrow {
+    transform: translateY(-50%) rotate(135deg);
+    border-color: darkred;
+    border-width: 0.15em 0.15em 0 0;
+}
+
+    /* HERO INFORMATION */
+.character-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.character-info:not(p .character-info) {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 0;
+    height: 550px;
+    width: 900px;
+    overflow: auto; /* Add overflow property to enable scrolling if content exceeds the container */
+}
+
+.character-info h2 {
+    font-family: 'Cambria', 'Cochin', Georgia, Times, 'Times New Roman', serif;
+    font-weight: 900;
+    font-size: 30px;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+}
+
+#character-name {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 35px;
+    text-transform: uppercase;
+}
+
+#primary-attribute {
+    font-family: 'Segoe UI', Tahoma, 'Geneva', Verdana, sans-serif;
+    font-size: 25px;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+#character-description {
+    font-size: 28px;
+    padding: 15px;
+    width: 95%;
+    height: 350px;
+    overflow: auto;
+    scrollbar-color: #832626da #5a5a5a3f;
+}
+
+.character-info p {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 25px;
+    padding: 30px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+    /* DEFAULT HERO INFORMATION */
+.default-character-info {
+    background: rgba(255, 255, 255, 0.5); /* Default background color */
+    border: 1px solid rgba(0, 0, 0, 0.25); /* Default border style */
+    color: #000; /* Default text color */
+}
+
+    /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> HERO STATS */
+.stats-attributes-table {
+    width: 1500px;
+    border-collapse: collapse;
+    background-color: #3b4f74;
+    font-size: 20px;
+    color: #ffffff;
+    table-layout: fixed;
+}
+
+.stats-attributes-table th, .stats-attributes-table td {
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    padding: 10px;
+    text-align: center;
+}
+
+.stats-attributes-table th {
+    font-size: 30px;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+
+.stats-attributes-table td {
+    font-weight: bold;
+}
+
+.stats-attributes-table tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.stats-attributes-table td:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,228 @@
+    /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> VERSUS CONTAINERS */
+    /* VERSUS CONTAINER */
+.versus-section {
+    width: 100%;
+    height: 1050px;
+    overflow: hidden;
+    margin-bottom: 0;
+    position: relative;
+    margin-top: 0;
+}
+
+.versus-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color:white;
+}
+
+.hero-versus, .versus-image-container {
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+}
+
+
+.versus-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 250px;
+    margin-top: 300px;
+}
+
+.versus-section {
+    display: flex;
+    justify-content: space-between; /* Split into two columns */
+    align-items: center;
+    margin-top: 30px;
+    width: 100%;
+    background: url("../images/option_background.jpg") center/cover no-repeat; /* Simplify background property */
+    padding: 20px; /* Add padding for spacing */
+}
+
+.hero-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 43%; /* Adjust width for responsiveness */
+    border: 10px ridge rgba(214, 168, 146, 0.25);
+    background-color: rgba(97, 64, 104, 0.418);
+    padding: 20px;
+    margin: 5px
+}
+
+.versus-image-container img { width: 550px; }
+
+    /* BUTTON CONTAINERS */
+.button-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 900px;
+    padding: 0;
+    padding-bottom: 20px;
+    margin: 0;
+}
+
+.add-container, .delete-container{
+    position: relative;
+    display: flex;
+    width: 380px;
+}
+
+.add-container, .delete-container{
+	box-shadow:inset 0px 0px 3px 0px #91b8b3;
+    background:linear-gradient(to bottom, #2e466e 5%, #415989 100%);
+	background-color:#2e466e;
+	border-radius:5px;
+	display:inline-block;
+    border: ridge 5px transparent;
+	cursor:pointer;
+	text-decoration:none;
+}
+
+.add-container:hover, .delete-container:hover{
+    background:linear-gradient(to bottom, #415989 5%, #2e466e 100%);
+	background-color:#415989;
+    border: ridge 5px #cac46e;
+}
+
+.fight-button-container {
+    position: absolute;
+    padding-top: 300px;
+}
+
+#remove-match-button, #create-match-button{
+    font-size:large;
+    font-family: fantasy;
+    box-shadow:inset 30px 30px 30px 30px #f7f5f59d;
+    display:inline-block;
+	border-radius:7px;
+	cursor:pointer;
+	text-decoration:none;
+}
+
+#remove-match-button:hover{
+    background:linear-gradient(to bottom, #dadbdf 5%, #ef4111 100%);
+	background-color:#415989;
+    border: ridge 3px #dbd696;
+}
+
+#create-match-button:hover{
+    background:linear-gradient(to bottom, #dadbdf 5%, #68e326 100%);
+	background-color:#415989;
+    border: ridge 3px #dbd696;
+}
+
+    /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> BUTTONS */
+    /* ADD AND DELETE BUTTONS */
+.add-button, .delete-button, #remove-match-button, #create-match-button{
+    background: transparent;
+    padding: 10px 20px;
+    border: none;
+    position: inherit;
+}
+
+.add-button img, .delete-button img {
+    padding: 0;
+    margin: 0;
+    max-width: 250px;
+    position: inherit;
+}
+
+    /* FIGHT BUTTON */
+.fight-button-container {
+    text-align: center; /* Center align the button */
+    margin-top: 20px; /* Add some top margin for spacing */
+}
+
+.fight-button {
+	box-shadow: 3px 4px 0px 0px #8a2a21;
+	background:linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
+	background-color:#591fc6;
+	border-radius:18px;
+	border:1px solid #d02718;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size: 35px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+	padding:10px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #810e05;
+}
+
+.fight-button:hover {
+    background:linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
+	background-color:#f24437;
+}
+
+    /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> HERO PORTRAITS */
+.vs-hero-portrait {
+    overflow: hidden;
+    margin-bottom: 0;
+    position: relative;
+}
+
+.hero-video {
+    width: 600px;
+    height: 600px;
+}
+
+.vs-hero-portrait {
+    height: 600px;
+    border: solid 5px #b91717;
+    background-image: url("../images/mist.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    width: 600px;
+    height: 600px;
+}
+
+.vs-hero-portrait .hero-info, .vs-hero-portrait .hero-info {
+    position: absolute;
+}
+
+.hero-info .table-attributes {
+    margin-top: -150px;
+}
+
+    /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> HERO INFO */
+    /* HERO INFORMATION */
+.hero-info {
+    text-align: center;
+}
+
+.hero-name {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+    /* STATS */
+.stats-attributes {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.stats,
+.attributes {
+    flex: 1;
+}
+
+.stats p,
+.attributes p {
+    margin: 5px 0;
+}
+
+.vs-hero-portrait .attributes {
+    margin-top: 12px;
+    position: relative;
+}
