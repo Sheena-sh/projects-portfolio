@@ -1,0 +1,155 @@
+module wordyApp {
+
+
+// object class player
+   struct Player {
+   	    string username;
+   	    string password;
+    	boolean loggedIn;
+    	boolean isInGame;
+   };
+
+// object class roomGame
+   struct roomGame {
+        string roomID;
+        string gameState; //pending, inGame, wrappingUp, finished
+        string winner;
+   };
+
+// exceptions
+   exception alreadyLoggedIn {
+   	    string message;
+   };
+
+   exception incorrectCredentials {
+   	    string message;
+   };
+
+   exception invalidWord {
+   	    string message;
+   };
+
+
+   exception noPlayerJoined {
+   	    string message;
+   };
+
+   exception gameFull {
+        string message;
+   };
+
+
+// base in prob specs
+	interface Wordy {
+
+	        /*
+            // uses SQL database
+            */
+            boolean login(in string username, in string password) raises (incorrectCredentials, alreadyLoggedIn);
+
+            void showMainMenu();
+
+            /*
+            // uses ArrayList
+            // top players
+            */
+    		string showLeaderBoard();
+
+    		string top5longestWords(in string word);// uses ArrayList
+
+    		/*
+    		// uses ArrayList;
+    		// method to generate letters;
+    		// Sends 17 random letters;
+    		// must have 5 vowels
+    		*/
+    		string sendRandomLetters();
+
+            /*
+            //Shows the 17 random letters with 5
+            // vowels to the GUI prompt
+            */
+    		void displayRandomLetters();
+
+            void play(in string username);
+
+            string userEnteredWord(in string word);
+
+            boolean roomCreatable(); // room can be created
+
+    		string roundStatus();
+
+            /*
+            // checks the longest word formed by the players (in string longestWOrd)
+            // returns the wienner(out Player player)
+            // if same word/length -> no winner declared
+            */
+    		string roundWinnerChecker(in string longestWord, in Player wordForm, out Player player);
+
+    		/*
+    		// uses file "words.txt";
+    		// checks if word consist at least 5 letters;
+    		// throws exception if word < 5 letters
+    		*/
+    		boolean isWordValid(in string word);
+
+    		boolean isAlreadyLoggedIn(in string username);
+
+    		/*
+    		// uses ArrayList;
+    		// throws exception when no player joined after 10 sec
+    		*/
+    		boolean startGame(in string username) raises (noPlayerJoined);
+
+            boolean joinGame() raises (noPlayerJoined, gameFull);
+
+            /*
+            // stores all the words given by the players
+            */
+            boolean sendWords(in string username, in string word) raises (invalidWord);
+
+    		void logOffUser(in string username);
+
+            /*
+            // waitForPlayers method
+            // uses THread/Timer
+            */
+    		void startTenSecondTimer();
+
+    		void setRoomCreator();
+
+            void incrementPlayerWin();
+
+    		long pointCount();// calculate score
+    };
+
+    // additional methods for the servant(initial/plan)
+    // void connectToDataBase()
+    // void disconnectPlayer(String username)**
+    // boolean authenticate(# - not sure)
+    // void isEnglishWord
+    // boolean endRound(String player1, String player2)
+    // long calculateScore(String word)
+    // long calculateWordScore(String word)
+    // void playGame(String player1, String player2)
+    //***** idk if sa IDL ito or sa servant class methods// void startRound(String player1, String player2, String letters, int round)// starts another round
+    // void endGame(String player1, String player2)
+
+    // client
+    // Wordy
+    // WordyHelper
+    // WordyHolder
+    // WordyOperations
+    // _WordyStub
+
+    // server
+    // Wordy
+    // WordyOperations
+    // WordyPOA
+};
+
+
+
+
+
+
