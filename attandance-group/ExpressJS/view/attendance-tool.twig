@@ -1,0 +1,99 @@
+<!-- This is for the attendance page By: Sheena Emocling and Lawrence Miguel II -->
+{% extends 'layout.twig' %}
+
+{% block content %}
+    <h1 class="text-dark">Attendance Tool Page</h1>
+
+    <div class="container-fluid">
+        <h3 class="text-dark mb-4">Scan QR Attendance</h3>
+<!-- Start: Scan Again Button -->
+            <div class="container mt-3">
+                <button class="btn btn-primary" onClick="window.location.reload();">Scan Again</button>
+            </div>
+            <!-- End: Scan Again Button -->
+        <!-- Start: Message Container -->
+        <div id="message-container" class="alert alert-info mt-3" role="alert"><!-- Messages will be displayed here --></div>
+        <div class="row">
+            <!-- Start: QR Scanner -->
+            <div class="container">
+                <div class="section">
+                    <div id="my-qr-reader" style="width: 100%; max-width: 400px; margin: 0 auto;"></div>
+                </div>
+            </div>
+            <!-- End: QR Scanner -->
+
+            
+        </div>
+
+        <a class="border rounded d-inline scroll-to-top" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+    </div>
+
+    <script>
+        function domReady(fn) {
+            if (document.readyState === "complete" || document.readyState === "interactive") {
+                setTimeout(fn, 1000);
+            } else {
+                document.addEventListener("DOMContentLoaded", fn);
+            }
+        }
+
+        domReady(function () {
+            function onScanSuccess(decodedText) {
+                sendAttendanceDataToServer(decodedText);
+            }
+
+            let htmlscanner = new Html5QrcodeScanner(
+                "my-qr-reader",
+                { fps: 10, qrbos: 250 }
+            );
+            htmlscanner.render(onScanSuccess);
+
+            // Function to send attendance data to the server
+            function sendAttendanceDataToServer(data) {
+                // Make a POST request to the server
+                fetch('/attendance', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body:data,
+                })
+                    .then(response => response.json())
+                    .then(result => {
+                        console.log(result);
+                        handleServerResponse(result);
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        // Handle errors
+                    });
+            }
+
+            // Function to handle the server response
+            function handleServerResponse(result) {
+                // Update the UI based on the server response
+                console.log(result);
+
+                // Example: Display a message on the page
+                const messageContainer = document.getElementById('message-container');
+                if (messageContainer) {
+                    if (result.message){
+                        messageContainer.innerText = "Success: " +result.message;
+                    }else{
+                        messageContainer.innerText = "Error:" + result.error;
+                    }
+                }
+
+                // Handle the result as needed
+            }
+
+            // Function to handle the "Scan Again" button click
+        function scanAgain() {
+			console.log("test")
+            window.location.reload(true); // Reload the page
+        }
+        });
+    </script>
+{% endblock %}
